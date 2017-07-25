@@ -12,9 +12,16 @@ Android quantity view with add and remove button to simply use as a complex widg
 add gradle dependency to your dependency list:
 
 ``` groovy
-dependencies {
-	compile 'me.himanshusoni.quantityview:quantity-view:1.2.0'
-}
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+	dependencies {
+	        compile 'com.github.yesidlazaro:QuantityView:v1.3.0'
+	}
 ```
 
 ### Use
@@ -46,12 +53,17 @@ app:qv_quantityTextColor="color"
 app:qv_quantity="integer"
 app:qv_quantityPadding="dimension"
 app:qv_maxQuantity="integer"
-app:qv_minQuantity="integer"
-app:qv_quantityDialog="boolean"
+app:qv_quantityButtonsPadding="dimension"
+app:qv_addButtonIcon="drawable"
+app:qv_removeButtonIcon="drawable"
 ```
 
 
 #### Change Log
+###### v1.3.0
+- buttons padding
+- buttons icons
+-updated support lib to 25.3.1
 ###### v1.2.0
 - old and new quantity in `OnQuantityChangeListener`.
 
