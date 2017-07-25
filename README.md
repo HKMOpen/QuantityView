@@ -1,7 +1,8 @@
 # QuantityView
 Android quantity view with add and remove button to simply use as a complex widget with handful of quick customizations.
 
-[ ![Download](https://api.bintray.com/packages/himanshu-soni/maven/quantity-view/images/download.svg) ](https://bintray.com/himanshu-soni/maven/quantity-view/_latestVersion)
+[![](https://jitpack.io/v/yesidlazaro/QuantityView.svg)](https://jitpack.io/#yesidlazaro/QuantityView)
+
 
 ### Sample Screen
 ![QuantityView](https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/screenshots/device-2015-09-29-191352.png)
@@ -60,6 +61,8 @@ app:qv_removeButtonIcon="drawable"
 
 
 #### Change Log
+###### v1.3.1
+- fixed issue with OnQuantityChangeListener editing with dialog 
 ###### v1.3.0
 - buttons padding
 - buttons icons
