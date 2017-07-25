@@ -21,7 +21,7 @@ add gradle dependency to your dependency list:
 	}
 
 	dependencies {
-	        compile 'com.github.yesidlazaro:QuantityView:v1.3.0'
+	        compile 'com.github.yesidlazaro:QuantityView:{latest-version}'
 	}
 ```
 
