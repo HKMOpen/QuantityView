@@ -320,11 +320,12 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             limitReached = true;
         }
         if (!limitReached) {
-//            if (onQuantityChangeListener != null) {
-//                onQuantityChangeListener.onQuantityChanged(quantity, newQuantity, true);
-//            }
+
             this.quantity = newQuantity;
             mTextViewQuantity.setText(String.valueOf(this.quantity));
+            if (onQuantityChangeListener != null) {
+                onQuantityChangeListener.onQuantityChanged(quantity, newQuantity, true);
+            }
         } else {
             if (onQuantityChangeListener != null) onQuantityChangeListener.onLimitReached();
         }

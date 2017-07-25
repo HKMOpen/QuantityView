@@ -1,21 +1,12 @@
 package me.himanshusoni.quantityview.sample;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import me.himanshusoni.quantityview.QuantityView;
@@ -37,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
         final QuantityView quantityViewDefault = (QuantityView) findViewById(R.id.quantityView_default);
         quantityViewDefault.setOnQuantityChangeListener(this);
-        quantityViewDefault.setQuantityClickListener(new View.OnClickListener() {
+       /* quantityViewDefault.setQuantityClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -90,21 +81,21 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
                 builder.show();
             }
         });
-
+*/
         QuantityView quantityViewCustom1 = (QuantityView) findViewById(R.id.quantityView_custom_1);
-        quantityViewCustom1.setOnQuantityChangeListener(this);
+        //quantityViewCustom1.setOnQuantityChangeListener(this);
 
         QuantityView quantityViewCustom2 = (QuantityView) findViewById(R.id.quantityView_custom_2);
-        quantityViewCustom2.setOnQuantityChangeListener(this);
+        //quantityViewCustom2.setOnQuantityChangeListener(this);
 
     }
 
     @Override
     public void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically) {
-        QuantityView quantityViewCustom1 = (QuantityView) findViewById(R.id.quantityView_custom_1);
+      /*  QuantityView quantityViewCustom1 = (QuantityView) findViewById(R.id.quantityView_custom_1);
         if (newQuantity == 3) {
             quantityViewCustom1.setQuantity(oldQuantity);
-        }
+        }*/
         Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
     }
 

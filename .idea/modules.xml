@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuantityView.iml" filepath="$PROJECT_DIR$/QuantityView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/QuantityView.iml" filepath="$PROJECT_DIR$/QuantityView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/quantity-view/quantity-view.iml" filepath="$PROJECT_DIR$/quantity-view/quantity-view.iml" />
       <module fileurl="file://$PROJECT_DIR$/quantity-view/quantity-view.iml" filepath="$PROJECT_DIR$/quantity-view/quantity-view.iml" />
     </modules>
   </component>
