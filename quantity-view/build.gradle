@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 7
-        versionName "1.2.0"
+        versionCode 8
+        versionName "1.3.0"
     }
     buildTypes {
         release {
@@ -18,34 +18,7 @@ android {
     }
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'quantity-view'
-
-    publishedGroupId = 'me.himanshusoni.quantityview'
-    libraryName = 'quantity-view'
-    artifact = 'quantity-view'
-
-    libraryDescription = 'Android quantity view with add and remove button'
-
-    siteUrl = 'https://github.com/himanshu-soni/QuantityView'
-    gitUrl = 'https://github.com/himanshu-soni/QuantityView.git'
-
-    libraryVersion = '1.2.0'
-
-    developerId = 'himanshu-soni'
-    developerName = 'Himanshu Soni'
-    developerEmail = 'himanshusoni.me@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
-apply from: 'https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/bintray.gradle'
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
 }

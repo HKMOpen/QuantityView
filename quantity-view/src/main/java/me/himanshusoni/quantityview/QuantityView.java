@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -24,9 +25,9 @@ import android.widget.Toast;
  * Quantity view to add and remove quantities
  */
 public class QuantityView extends LinearLayout implements View.OnClickListener {
-
+    private Drawable drawableAddButonIcon;
+    private Drawable drawableRemoveButonIcon;
     private Drawable quantityBackground, addButtonBackground, removeButtonBackground;
-
     private String addButtonText, removeButtonText;
 
     private int quantity;
@@ -80,17 +81,22 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             addButtonBackground = a.getDrawable(R.styleable.QuantityView_qv_addButtonBackground);
         }
         addButtonTextColor = a.getColor(R.styleable.QuantityView_qv_addButtonTextColor, Color.BLACK);
-
         removeButtonText = getResources().getString(R.string.qv_remove);
         if (a.hasValue(R.styleable.QuantityView_qv_removeButtonText)) {
             removeButtonText = a.getString(R.styleable.QuantityView_qv_removeButtonText);
         }
+        if (a.hasValue(R.styleable.QuantityView_qv_addButtonIcon)) {
+            drawableAddButonIcon = a.getDrawable(R.styleable.QuantityView_qv_addButtonIcon);
+        }
+
         removeButtonBackground = ContextCompat.getDrawable(getContext(), R.drawable.qv_btn_selector);
         if (a.hasValue(R.styleable.QuantityView_qv_removeButtonBackground)) {
             removeButtonBackground = a.getDrawable(R.styleable.QuantityView_qv_removeButtonBackground);
         }
         removeButtonTextColor = a.getColor(R.styleable.QuantityView_qv_removeButtonTextColor, Color.BLACK);
-
+        if (a.hasValue(R.styleable.QuantityView_qv_removeButtonIcon)) {
+            drawableRemoveButonIcon = a.getDrawable(R.styleable.QuantityView_qv_removeButtonIcon);
+        }
         quantity = a.getInt(R.styleable.QuantityView_qv_quantity, 0);
         maxQuantity = a.getInt(R.styleable.QuantityView_qv_maxQuantity, Integer.MAX_VALUE);
         minQuantity = a.getInt(R.styleable.QuantityView_qv_minQuantity, 0);
@@ -101,32 +107,41 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         if (a.hasValue(R.styleable.QuantityView_qv_quantityBackground)) {
             quantityBackground = a.getDrawable(R.styleable.QuantityView_qv_quantityBackground);
         }
-
         quantityDialog = a.getBoolean(R.styleable.QuantityView_qv_quantityDialog, true);
 
+        int quantityButtonsPadding = (int) a.getDimension(R.styleable.QuantityView_qv_quantityButtonsPadding, pxFromDp(16));
         a.recycle();
-        int dp10 = pxFromDp(10);
-
         mButtonAdd = new Button(getContext());
         mButtonAdd.setGravity(Gravity.CENTER);
-        mButtonAdd.setPadding(dp10, dp10, dp10, dp10);
+        mButtonAdd.setPadding(quantityButtonsPadding, quantityButtonsPadding, quantityButtonsPadding, quantityButtonsPadding);
         mButtonAdd.setMinimumHeight(0);
         mButtonAdd.setMinimumWidth(0);
         mButtonAdd.setMinHeight(0);
         mButtonAdd.setMinWidth(0);
+        mButtonAdd.setTypeface(Typeface.DEFAULT_BOLD);
+        if (drawableAddButonIcon != null) {
+            mButtonAdd.setCompoundDrawablesWithIntrinsicBounds(drawableAddButonIcon, null, null, null);
+        } else {
+            setAddButtonText(addButtonText);
+        }
         setAddButtonBackground(addButtonBackground);
-        setAddButtonText(addButtonText);
         setAddButtonTextColor(addButtonTextColor);
 
         mButtonRemove = new Button(getContext());
         mButtonRemove.setGravity(Gravity.CENTER);
-        mButtonRemove.setPadding(dp10, dp10, dp10, dp10);
+        mButtonRemove.setPadding(quantityButtonsPadding, quantityButtonsPadding, quantityButtonsPadding, quantityButtonsPadding);
         mButtonRemove.setMinimumHeight(0);
         mButtonRemove.setMinimumWidth(0);
         mButtonRemove.setMinHeight(0);
         mButtonRemove.setMinWidth(0);
+        mButtonRemove.setTextSize(16);
+        mButtonRemove.setTypeface(Typeface.DEFAULT_BOLD);
+        if (drawableRemoveButonIcon != null) {
+            mButtonRemove.setCompoundDrawablesWithIntrinsicBounds(drawableRemoveButonIcon, null, null, null);
+        } else {
+            setRemoveButtonText(removeButtonText);
+        }
         setRemoveButtonBackground(removeButtonBackground);
-        setRemoveButtonText(removeButtonText);
         setRemoveButtonTextColor(removeButtonTextColor);
 
         mTextViewQuantity = new TextView(getContext());

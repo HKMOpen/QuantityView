@@ -3,4 +3,5 @@
 
     <string name="qv_add">+</string>
     <string name="qv_remove">-</string>
+    <string name="qv_dialog_title">Please change this title</string>
 </resources>
