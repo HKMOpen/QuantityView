@@ -101,7 +101,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         maxQuantity = a.getInt(R.styleable.QuantityView_qv_maxQuantity, Integer.MAX_VALUE);
         minQuantity = a.getInt(R.styleable.QuantityView_qv_minQuantity, 0);
 
-        quantityPadding = (int) a.getDimension(R.styleable.QuantityView_qv_quantityPadding, pxFromDp(24));
+        quantityPadding = (int) a.getDimension(R.styleable.QuantityView_qv_quantityPadding, pxFromDp(16));
         quantityTextColor = a.getColor(R.styleable.QuantityView_qv_quantityTextColor, Color.BLACK);
         quantityBackground = ContextCompat.getDrawable(getContext(), R.drawable.qv_bg_selector);
         if (a.hasValue(R.styleable.QuantityView_qv_quantityBackground)) {
@@ -157,9 +157,9 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         setOrientation(HORIZONTAL);
 
         addView(mButtonRemove, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        addView(mTextViewQuantity, LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+        addView(mTextViewQuantity, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addView(mButtonAdd, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
+        setGravity(Gravity.CENTER_VERTICAL);
         mButtonAdd.setOnClickListener(this);
         mButtonRemove.setOnClickListener(this);
         mTextViewQuantity.setOnClickListener(this);
@@ -356,7 +356,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
 
     public void setQuantityPadding(int quantityPadding) {
         this.quantityPadding = quantityPadding;
-        mTextViewQuantity.setPadding(quantityPadding, 0, quantityPadding, 0);
+        mTextViewQuantity.setPadding(quantityPadding, quantityPadding, quantityPadding, quantityPadding);
     }
 
     public int getQuantityTextColor() {
