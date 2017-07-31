@@ -16,6 +16,7 @@
         <attr name="qv_quantityTextColor" format="color" />
         <attr name="qv_quantityPadding" format="dimension" />
         <attr name="qv_quantityButtonsPadding" format="dimension" />
+        <attr name="qv_quantityTextSize" format="dimension" />
 
         <attr name="qv_maxQuantity" format="integer" />
         <attr name="qv_minQuantity" format="integer" />

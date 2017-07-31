@@ -38,7 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:qv_addButtonIcon="@drawable/ic_add_black_24dp"
-            app:qv_quantityDialog="true" />
+            app:qv_quantityDialog="true"
+            app:qv_quantityTextSize="24sp"
+            app:qv_removeButtonIcon="@drawable/ic_add_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
