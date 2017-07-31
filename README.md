@@ -57,6 +57,8 @@ app:qv_maxQuantity="integer"
 app:qv_quantityButtonsPadding="dimension"
 app:qv_addButtonIcon="drawable"
 app:qv_removeButtonIcon="drawable"
+app:qv_quantityTextSize="24sp"
+
 ```
 
 
