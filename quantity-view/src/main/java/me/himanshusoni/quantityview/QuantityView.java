@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -34,6 +35,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     private boolean quantityDialog;
     private int maxQuantity = Integer.MAX_VALUE, minQuantity = Integer.MAX_VALUE;
     private int quantityPadding;
+    private int quantityButtonIconSize;
     private float quantityTextSize;
     private int quantityTextColor, addButtonTextColor, removeButtonTextColor;
 
@@ -67,6 +69,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void init(AttributeSet attrs, int defStyle) {
@@ -102,6 +105,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         minQuantity = a.getInt(R.styleable.QuantityView_qv_minQuantity, 0);
 
         quantityPadding = (int) a.getDimension(R.styleable.QuantityView_qv_quantityPadding, pxFromDp(16));
+        quantityButtonIconSize = (int) a.getDimension(R.styleable.QuantityView_qv_controlButtonIconSize, pxFromDp(16));
         quantityTextColor = a.getColor(R.styleable.QuantityView_qv_quantityTextColor, Color.BLACK);
         quantityBackground = ContextCompat.getDrawable(getContext(), R.drawable.qv_bg_selector);
         if (a.hasValue(R.styleable.QuantityView_qv_quantityBackground)) {
@@ -122,7 +126,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         mButtonAdd.setMinWidth(0);
         mButtonAdd.setTypeface(Typeface.DEFAULT_BOLD);
         if (drawableAddButonIcon != null) {
-            mButtonAdd.setCompoundDrawablesWithIntrinsicBounds(drawableAddButonIcon, null, null, null);
+            setDrawableAddButonIcon(drawableAddButonIcon);
         } else {
             setAddButtonText(addButtonText);
         }
@@ -139,7 +143,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         mButtonRemove.setTextSize(16);
         mButtonRemove.setTypeface(Typeface.DEFAULT_BOLD);
         if (drawableRemoveButonIcon != null) {
-            mButtonRemove.setCompoundDrawablesWithIntrinsicBounds(drawableRemoveButonIcon, null, null, null);
+            setDrawableRemoveButonIcon(drawableRemoveButonIcon);
         } else {
             setRemoveButtonText(removeButtonText);
         }
@@ -163,8 +167,30 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         mButtonAdd.setOnClickListener(this);
         mButtonRemove.setOnClickListener(this);
         mTextViewQuantity.setOnClickListener(this);
+
+        LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        lp.height = LayoutParams.WRAP_CONTENT;
+        lp.width = LayoutParams.WRAP_CONTENT;
+        setLayoutParams(lp);
     }
 
+    public void setQuantityTextSize(float size) {
+        mTextViewQuantity.setTextSize(size);
+    }
+
+    public void setDrawableAddButonIcon(Drawable drawableAddButonIcon) {
+        //drawableAddButonIcon.setBounds(0, 0, quantityButtonIconSize, quantityButtonIconSize);
+        ScaleDrawable scaleDrawable = new ScaleDrawable(drawableAddButonIcon, 0, quantityButtonIconSize, quantityButtonIconSize);
+        scaleDrawable.setBounds(0, 0, quantityButtonIconSize, quantityButtonIconSize);
+        mButtonAdd.setCompoundDrawablesWithIntrinsicBounds(drawableAddButonIcon, null, null, null);
+    }
+
+    public void setDrawableRemoveButonIcon(Drawable drawableRemoveButonIcon) {
+        //drawableRemoveButonIcon.setBounds(0, 0, quantityButtonIconSize, quantityButtonIconSize);
+        ScaleDrawable scaleDrawable = new ScaleDrawable(drawableRemoveButonIcon, 0, quantityButtonIconSize, quantityButtonIconSize);
+        scaleDrawable.setBounds(0, 0, quantityButtonIconSize, quantityButtonIconSize);
+        mButtonRemove.setCompoundDrawablesWithIntrinsicBounds(drawableRemoveButonIcon, null, null, null);
+    }
 
     public void setQuantityClickListener(OnClickListener ocl) {
         mTextViewClickListener = ocl;
@@ -291,6 +317,10 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
 
     public String getAddButtonText() {
         return addButtonText;
+    }
+
+    public void setButtonImageSize(int s) {
+        quantityButtonIconSize = s;
     }
 
     public void setAddButtonText(String addButtonText) {
@@ -449,6 +479,4 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             return false;
         }
     }
-
-
 }

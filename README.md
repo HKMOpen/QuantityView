@@ -1,13 +1,15 @@
 # QuantityView
 Android quantity view with add and remove button to simply use as a complex widget with handful of quick customizations.
 
-[![](https://jitpack.io/v/yesidlazaro/QuantityView.svg)](https://jitpack.io/#yesidlazaro/QuantityView)
-
+[ ![Download](https://api.bintray.com/packages/jjhesk/maven/QuantityView/images/download.svg) ](https://bintray.com/jjhesk/maven/QuantityView/_latestVersion)
 
 ### Sample Screen
 ![QuantityView](https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/screenshots/device-2015-09-29-191352.png)
 ![QuantityView](https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/screenshots/device-2015-10-09-175354.png)
 ![QuantityView](https://raw.githubusercontent.com/himanshu-soni/QuantityView/master/screenshots/device-2015-10-09-175420.png)
+
+- [x] the quantity view
+- [x] the label for the quantity view
 
 ### Installation
 add gradle dependency to your dependency list:
@@ -21,7 +23,7 @@ add gradle dependency to your dependency list:
 	}
 
 	dependencies {
-	        compile 'com.github.yesidlazaro:QuantityView:{latest-version}'
+	        compile 'com.hkm.ui:QuantityView:{latest-version}'
 	}
 ```
 
