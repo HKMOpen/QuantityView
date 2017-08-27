@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,11 @@ import android.widget.TextView;
  * Created by hesk on 27/8/2017.
  */
 public class QuantityLabelView extends RelativeLayout {
-
+    private QuantityView.OnQuantityChangeListener listener;
     private TextView mTextViewQuantityLabel;
     private QuantityView mQuantityView;
+    private int textPadding;
+    private String label_title;
 
     public QuantityLabelView(Context context) {
         super(context);
@@ -44,6 +47,23 @@ public class QuantityLabelView extends RelativeLayout {
         init(attrs, defStyleAttr);
     }
 
+    public QuantityView.OnQuantityChangeListener getOnQuantityChangeListener() {
+        return listener;
+    }
+
+    public void setOnQuantityChangeListener(final QuantityView.OnQuantityChangeListener onQuantityChangeListener) {
+        this.listener = onQuantityChangeListener;
+        this.mQuantityView.setOnQuantityChangeListener(onQuantityChangeListener);
+    }
+
+    public void setOnQuantityChangeListener(int Id, final QuantityView.OnQuantityChangeListener onQuantityChangeListener) {
+        this.ID = Id;
+        this.listener = onQuantityChangeListener;
+        this.mQuantityView.setOnQuantityChangeListener(onQuantityChangeListener);
+    }
+
+    private int ID = -1;
+
     @LayoutRes
     protected int reslayout() {
         return R.layout.qr_bar;
@@ -53,6 +73,7 @@ public class QuantityLabelView extends RelativeLayout {
         //  ButterKnife.bind(this, hh);
         mTextViewQuantityLabel = (TextView) hh.findViewById(R.id.com_quantity_label);
         mQuantityView = (QuantityView) hh.findViewById(R.id.com_quantity);
+        mQuantityView.setId(ID);
     }
 
     private int pxFromDp(final float dp) {
@@ -68,7 +89,6 @@ public class QuantityLabelView extends RelativeLayout {
         }
     }
 
-    private int textPadding;
 
     public int getPadding() {
         return textPadding;
@@ -83,6 +103,16 @@ public class QuantityLabelView extends RelativeLayout {
         return mQuantityView.getQuantity();
     }
 
+    public void setText(@StringRes final int naming) {
+        this.label_title = getResources().getString(naming);
+        mTextViewQuantityLabel.setText(naming);
+    }
+
+    public void setText(String naming) {
+        this.label_title = naming;
+        mTextViewQuantityLabel.setText(naming);
+    }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void init(AttributeSet attrs, int defStyle) {
 
@@ -93,11 +123,7 @@ public class QuantityLabelView extends RelativeLayout {
         }
 
         mTextViewQuantityLabel.setTextColor(az.getColor(R.styleable.QuantityViewLabel_qvl_textColor, Color.BLACK));
-
-
         setPadding((int) az.getDimension(R.styleable.QuantityViewLabel_qvl_textPadding, pxFromDp(16)));
-
-
         if (az.hasValue(R.styleable.QuantityViewLabel_qvl_textSize)) {
             mTextViewQuantityLabel.setTextSize(az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16));
         }
@@ -105,9 +131,7 @@ public class QuantityLabelView extends RelativeLayout {
 
 
         final TypedArray am = getContext().obtainStyledAttributes(attrs, R.styleable.QuantityView, defStyle, 0);
-
         mQuantityView.setButtonImageSize((int) am.getDimension(R.styleable.QuantityView_qv_controlButtonIconSize, pxFromDp(16)));
-
         if (am.hasValue(R.styleable.QuantityView_qv_addButtonText)) {
             mQuantityView.setAddButtonText(am.getString(R.styleable.QuantityView_qv_addButtonText));
         }
@@ -118,7 +142,6 @@ public class QuantityLabelView extends RelativeLayout {
             mQuantityView.setDrawableAddButonIcon(am.getDrawable(R.styleable.QuantityView_qv_addButtonIcon));
             mQuantityView.setAddButtonText("");
         }
-
         if (am.hasValue(R.styleable.QuantityView_qv_removeButtonText)) {
             mQuantityView.setRemoveButtonText(am.getString(R.styleable.QuantityView_qv_removeButtonText));
         }

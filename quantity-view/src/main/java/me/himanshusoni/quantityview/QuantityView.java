@@ -47,7 +47,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     private String labelNegativeButton = "Cancel";
 
     public interface OnQuantityChangeListener {
-        void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically);
+        void onQuantityChanged(int com_id, int oldQuantity, int newQuantity, boolean programmatically);
 
         void onLimitReached();
     }
@@ -206,7 +206,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity += 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(getId(), oldQty, quantity, false);
             }
         } else if (v == mButtonRemove) {
             if (quantity - 1 < minQuantity) {
@@ -216,7 +216,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity -= 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(getId(), oldQty, quantity, false);
             }
         } else if (v == mTextViewQuantity) {
             if (!quantityDialog) return;
@@ -357,7 +357,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             this.quantity = newQuantity;
             mTextViewQuantity.setText(String.valueOf(this.quantity));
             if (onQuantityChangeListener != null) {
-                onQuantityChangeListener.onQuantityChanged(quantity, newQuantity, true);
+                onQuantityChangeListener.onQuantityChanged(getId(), quantity, newQuantity, true);
             }
         } else {
             if (onQuantityChangeListener != null) onQuantityChangeListener.onLimitReached();

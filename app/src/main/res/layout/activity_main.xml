@@ -75,6 +75,7 @@
                 android:id="@+id/quantityView_custom_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 app:qv_addButtonBackground="@drawable/add_selector"
                 app:qv_addButtonTextColor="@color/md_white_1000"
@@ -86,6 +87,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 app:qv_addButtonBackground="?selectableItemBackground"
                 app:qv_addButtonIcon="@drawable/icadd2"
@@ -99,27 +101,52 @@
                 app:qv_removeButtonIcon="@drawable/icremove2"
                 app:qvl_label="324242" />
 
-
-            <me.himanshusoni.quantityview.QuantityLabelView
-
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:qv_addButtonBackground="?selectableItemBackground"
+                android:orientation="vertical">
 
-                app:qv_controlButtonIconSize="11dp"
-                app:qv_quantity="2000"
+                <me.himanshusoni.quantityview.QuantityLabelView
 
-                app:qv_quantityDialog="true"
-                app:qv_quantityTextColor="@android:color/holo_blue_dark"
-                app:qv_quantityTextSize="5sp"
-                app:qv_removeButtonBackground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    app:qv_addButtonBackground="?selectableItemBackground"
+                    app:qv_controlButtonIconSize="11dp"
+                    app:qv_quantity="2000"
+                    app:qv_quantityDialog="true"
+                    app:qv_quantityTextColor="@android:color/holo_blue_dark"
+                    app:qv_quantityTextSize="5sp"
+                    app:qv_removeButtonBackground="?selectableItemBackground"
 
-                app:qvl_label="324242"
-                app:qvl_textColor="@color/md_amber_50"
+                    app:qvl_label="324242"
+                    app:qvl_textColor="@color/md_amber_50"
 
-                />
+                    />
 
+
+                <me.himanshusoni.quantityview.QuantityLabelView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    app:qv_addButtonBackground="?selectableItemBackground"
+
+                    app:qv_controlButtonIconSize="11dp"
+                    app:qv_quantity="2000"
+
+                    app:qv_quantityDialog="true"
+                    app:qv_quantityTextColor="@android:color/holo_blue_dark"
+                    app:qv_quantityTextSize="5sp"
+                    app:qv_removeButtonBackground="?selectableItemBackground"
+
+                    app:qvl_label="324242"
+                    app:qvl_textColor="@color/md_amber_50"
+
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
