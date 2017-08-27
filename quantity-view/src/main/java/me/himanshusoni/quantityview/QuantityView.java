@@ -175,6 +175,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     }
 
     public void setQuantityTextSize(float size) {
+        quantityTextSize = size;
         mTextViewQuantity.setTextSize(size);
     }
 

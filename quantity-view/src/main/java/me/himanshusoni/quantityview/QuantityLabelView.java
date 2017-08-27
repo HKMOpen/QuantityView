@@ -57,12 +57,11 @@ public class QuantityLabelView extends RelativeLayout {
     }
 
     public void setOnQuantityChangeListener(int Id, final QuantityView.OnQuantityChangeListener onQuantityChangeListener) {
-        this.ID = Id;
         this.listener = onQuantityChangeListener;
         this.mQuantityView.setOnQuantityChangeListener(onQuantityChangeListener);
+        this.mQuantityView.setId(Id);
     }
 
-    private int ID = -1;
 
     @LayoutRes
     protected int reslayout() {
@@ -73,7 +72,6 @@ public class QuantityLabelView extends RelativeLayout {
         //  ButterKnife.bind(this, hh);
         mTextViewQuantityLabel = (TextView) hh.findViewById(R.id.com_quantity_label);
         mQuantityView = (QuantityView) hh.findViewById(R.id.com_quantity);
-        mQuantityView.setId(ID);
     }
 
     private int pxFromDp(final float dp) {
@@ -125,7 +123,7 @@ public class QuantityLabelView extends RelativeLayout {
         mTextViewQuantityLabel.setTextColor(az.getColor(R.styleable.QuantityViewLabel_qvl_textColor, Color.BLACK));
         setPadding((int) az.getDimension(R.styleable.QuantityViewLabel_qvl_textPadding, pxFromDp(16)));
         if (az.hasValue(R.styleable.QuantityViewLabel_qvl_textSize)) {
-            mTextViewQuantityLabel.setTextSize(az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16));
+            mTextViewQuantityLabel.setTextSize((float) az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16));
         }
         az.recycle();
 

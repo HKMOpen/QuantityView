@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import me.himanshusoni.quantityview.QuantityLabelView;
 import me.himanshusoni.quantityview.QuantityView;
 
 public class MainActivity extends AppCompatActivity implements QuantityView.OnQuantityChangeListener {
@@ -93,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         QuantityView quantityViewCustom2 = (QuantityView) findViewById(R.id.quantityView_custom_2);
         quantityViewCustom2.setOnQuantityChangeListener(this);
 
+
+        QuantityLabelView picbarppp = (QuantityLabelView) findViewById(R.id.picbar);
+        picbarppp.setOnQuantityChangeListener(121212, this);
     }
 
     @Override
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         if (newQuantity == 3) {
             quantityViewCustom1.setQuantity(oldQuantity);
         }*/
-        Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "ID:" + id + " -Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
     }
 
     @Override

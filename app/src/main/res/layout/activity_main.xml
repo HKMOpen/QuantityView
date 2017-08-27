@@ -127,7 +127,7 @@
 
 
                 <me.himanshusoni.quantityview.QuantityLabelView
-
+                    android:id="@+id/picbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -144,6 +144,7 @@
 
                     app:qvl_label="324242"
                     app:qvl_textColor="@color/md_amber_50"
+                    app:qvl_textSize="5sp"
 
                     />
             </LinearLayout>
