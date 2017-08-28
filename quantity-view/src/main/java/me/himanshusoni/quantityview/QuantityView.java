@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,7 +153,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
 
         mTextViewQuantity = new TextView(getContext());
         mTextViewQuantity.setGravity(Gravity.CENTER);
-        mTextViewQuantity.setTextSize(quantityTextSize);
+        setQuantityTextSize(quantityTextSize);
         setQuantityTextColor(quantityTextColor);
         setQuantity(quantity);
         setQuantityBackground(quantityBackground);
@@ -176,7 +177,8 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
 
     public void setQuantityTextSize(float size) {
         quantityTextSize = size;
-        mTextViewQuantity.setTextSize(size);
+        mTextViewQuantity.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
+        // mTextViewQuantity.setTextSize(size);
     }
 
     public void setDrawableAddButonIcon(Drawable drawableAddButonIcon) {

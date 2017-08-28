@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
                     public void onClick(DialogInterface dialog, int which) {
                         String newQuantity = et.getText().toString();
                         if (TextUtils.isEmpty(newQuantity)) return;
-
                         int intNewQuantity = Integer.parseInt(newQuantity);
 
                         quantityViewDefault.setQuantity(intNewQuantity);

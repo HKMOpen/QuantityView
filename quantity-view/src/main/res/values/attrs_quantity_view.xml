@@ -7,17 +7,17 @@
 
         <attr name="qv_removeButtonText" format="string" />
         <attr name="qv_removeButtonBackground" format="color|reference" />
-        <attr name="qv_removeButtonTextColor" format="color" />
+        <attr name="qv_removeButtonTextColor" format="color|reference" />
         <attr name="qv_removeButtonIcon" format="reference" />
         <attr name="qv_controlButtonIconSize" format="dimension" />
 
         <attr name="qv_quantity" format="integer" />
         <attr name="qv_quantityDialog" format="boolean" />
         <attr name="qv_quantityBackground" format="color|reference" />
-        <attr name="qv_quantityTextColor" format="color" />
-        <attr name="qv_quantityPadding" format="dimension" />
-        <attr name="qv_quantityButtonsPadding" format="dimension" />
-        <attr name="qv_quantityTextSize" format="dimension" />
+        <attr name="qv_quantityTextColor" format="color|reference" />
+        <attr name="qv_quantityPadding" format="dimension|reference" />
+        <attr name="qv_quantityButtonsPadding" format="dimension|reference" />
+        <attr name="qv_quantityTextSize" format="dimension|reference" />
 
         <attr name="qv_maxQuantity" format="integer" />
         <attr name="qv_minQuantity" format="integer" />
@@ -25,7 +25,7 @@
     <declare-styleable name="QuantityViewLabel">
         <attr name="qvl_label" format="string" />
         <attr name="qvl_textColor" format="color" />
-        <attr name="qvl_textSize" format="dimension" />
-        <attr name="qvl_textPadding" format="dimension" />
+        <attr name="qvl_textSize" format="dimension|reference" />
+        <attr name="qvl_textPadding" format="dimension|reference" />
     </declare-styleable>
 </resources>

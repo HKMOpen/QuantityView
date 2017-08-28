@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -119,12 +120,11 @@ public class QuantityLabelView extends RelativeLayout {
         if (az.hasValue(R.styleable.QuantityViewLabel_qvl_label)) {
             mTextViewQuantityLabel.setText(az.getString(R.styleable.QuantityViewLabel_qvl_label));
         }
-
         mTextViewQuantityLabel.setTextColor(az.getColor(R.styleable.QuantityViewLabel_qvl_textColor, Color.BLACK));
         setPadding((int) az.getDimension(R.styleable.QuantityViewLabel_qvl_textPadding, pxFromDp(16)));
-        if (az.hasValue(R.styleable.QuantityViewLabel_qvl_textSize)) {
-            mTextViewQuantityLabel.setTextSize((float) az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16));
-        }
+        float size = (float) az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16);
+         // mTextViewQuantityLabel.setTextSize(size);
+        mTextViewQuantityLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
         az.recycle();
 
 
@@ -162,9 +162,7 @@ public class QuantityLabelView extends RelativeLayout {
         }
 
         mQuantityView.setQuantityDialog(am.getBoolean(R.styleable.QuantityView_qv_quantityDialog, true));
-        if (am.hasValue(R.styleable.QuantityView_qv_quantityTextSize)) {
-            mQuantityView.setQuantityTextSize(am.getDimensionPixelOffset(R.styleable.QuantityView_qv_quantityTextSize, 16));
-        }
+        mQuantityView.setQuantityTextSize(am.getDimensionPixelOffset(R.styleable.QuantityView_qv_quantityTextSize, 16));
 
         am.recycle();
     }

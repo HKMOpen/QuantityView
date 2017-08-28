@@ -139,12 +139,12 @@
 
                     app:qv_quantityDialog="true"
                     app:qv_quantityTextColor="@android:color/holo_blue_dark"
-                    app:qv_quantityTextSize="5sp"
+                    app:qv_quantityTextSize="20sp"
                     app:qv_removeButtonBackground="?selectableItemBackground"
 
                     app:qvl_label="324242"
                     app:qvl_textColor="@color/md_amber_50"
-                    app:qvl_textSize="5sp"
+                    app:qvl_textSize="@dimen/check_small_font"
 
                     />
             </LinearLayout>
