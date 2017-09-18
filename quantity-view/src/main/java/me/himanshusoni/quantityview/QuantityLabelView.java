@@ -98,8 +98,43 @@ public class QuantityLabelView extends RelativeLayout {
         mTextViewQuantityLabel.setPadding(quantityPadding, quantityPadding, quantityPadding, quantityPadding);
     }
 
+    /**
+     * allow programmetically set qty
+     *
+     * @param quantity int
+     */
+    public void setQuantity(int quantity) {
+        mQuantityView.setQuantity(quantity);
+    }
+
     public int getQuantity() {
         return mQuantityView.getQuantity();
+    }
+
+    public int getMaxQty() {
+        return mQuantityView.getMaxQuantity();
+    }
+
+    public void setMaxQuantity(int maxQuantity) {
+        setMaxQuantity(maxQuantity, true);
+    }
+
+    public void setMaxQuantity(int maxQuantity, boolean autoAdjust) {
+        mQuantityView.setMaxQuantity(maxQuantity);
+        if (autoAdjust && mQuantityView.getMaxQuantity() < mQuantityView.getQuantity()) {
+            mQuantityView.setQuantity(maxQuantity);
+        }
+    }
+
+    public void setMinQuantity(int minQuantity) {
+        setMinQuantity(minQuantity, true);
+    }
+
+    public void setMinQuantity(int minQuantity, boolean autoAdjust) {
+        mQuantityView.setMinQuantity(minQuantity);
+        if (autoAdjust && mQuantityView.getMinQuantity() > mQuantityView.getQuantity()) {
+            mQuantityView.setQuantity(minQuantity);
+        }
     }
 
     public void setText(@StringRes final int naming) {
@@ -123,7 +158,7 @@ public class QuantityLabelView extends RelativeLayout {
         mTextViewQuantityLabel.setTextColor(az.getColor(R.styleable.QuantityViewLabel_qvl_textColor, Color.BLACK));
         setPadding((int) az.getDimension(R.styleable.QuantityViewLabel_qvl_textPadding, pxFromDp(16)));
         float size = (float) az.getDimensionPixelOffset(R.styleable.QuantityViewLabel_qvl_textSize, 16);
-         // mTextViewQuantityLabel.setTextSize(size);
+        // mTextViewQuantityLabel.setTextSize(size);
         mTextViewQuantityLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
         az.recycle();
 
