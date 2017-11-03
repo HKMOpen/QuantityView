@@ -48,9 +48,18 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     private String labelNegativeButton = "Cancel";
 
     public interface OnQuantityChangeListener {
-        void onQuantityChanged(int com_id, int oldQuantity, int newQuantity, boolean programmatically);
+        /**
+         * when the new quantity is ready for the change, the return should be TRUE
+         *
+         * @param com_id           the component id
+         * @param oldQuantity      the old value
+         * @param newQuantity      the new value
+         * @param programmatically is this controlled by api
+         * @return TRUE when the new value is ready for the change
+         */
+        boolean onQuantityChanged(int com_id, int oldQuantity, int newQuantity, boolean programmatically);
 
-        void onLimitReached();
+        void onLimitReached(int bound_int);
     }
 
     private OnQuantityChangeListener onQuantityChangeListener;
@@ -199,28 +208,34 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         mTextViewClickListener = ocl;
     }
 
+
+    private void quantity_level(int oldQty, int preNewQty, boolean reach_bound, int bound_qty) {
+        if (onQuantityChangeListener != null && reach_bound) {
+            onQuantityChangeListener.onLimitReached(bound_qty);
+        }
+
+        if (onQuantityChangeListener != null) {
+            if (onQuantityChangeListener.onQuantityChanged(getId(), oldQty, preNewQty, false)) {
+                quantity = preNewQty;
+                mTextViewQuantity.setText(String.valueOf(preNewQty));
+            }
+        } else {
+            quantity = preNewQty;
+            mTextViewQuantity.setText(String.valueOf(preNewQty));
+        }
+    }
+
     @Override
     public void onClick(View v) {
         if (v == mButtonAdd) {
-            if (quantity + 1 > maxQuantity) {
-                if (onQuantityChangeListener != null) onQuantityChangeListener.onLimitReached();
-            } else {
-                int oldQty = quantity;
-                quantity += 1;
-                mTextViewQuantity.setText(String.valueOf(quantity));
-                if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(getId(), oldQty, quantity, false);
-            }
+            //  int oldQty = quantity;
+            int preNewQty = quantity + 1;
+            quantity_level(quantity, quantity + 1, preNewQty > maxQuantity, maxQuantity);
+
         } else if (v == mButtonRemove) {
-            if (quantity - 1 < minQuantity) {
-                if (onQuantityChangeListener != null) onQuantityChangeListener.onLimitReached();
-            } else {
-                int oldQty = quantity;
-                quantity -= 1;
-                mTextViewQuantity.setText(String.valueOf(quantity));
-                if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(getId(), oldQty, quantity, false);
-            }
+            // int oldQty = quantity;
+            int preNewQty = quantity - 1;
+            quantity_level(quantity, quantity - 1, preNewQty < minQuantity, minQuantity);
         } else if (v == mTextViewQuantity) {
             if (!quantityDialog) return;
 
@@ -234,7 +249,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             final View inflate = LayoutInflater.from(getContext()).inflate(R.layout.qv_dialog_changequantity, null, false);
             final EditText et = (EditText) inflate.findViewById(R.id.qv_et_change_qty);
             et.setText(String.valueOf(quantity));
-
             builder.setView(inflate);
             builder.setPositiveButton(labelPositiveButton, null);
             final AlertDialog dialog = builder.show();
@@ -363,7 +377,8 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 onQuantityChangeListener.onQuantityChanged(getId(), quantity, newQuantity, true);
             }
         } else {
-            if (onQuantityChangeListener != null) onQuantityChangeListener.onLimitReached();
+            if (onQuantityChangeListener != null)
+                onQuantityChangeListener.onLimitReached(newQuantity);
         }
     }
 
@@ -482,4 +497,11 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             return false;
         }
     }
+
+    public void setEnabled(boolean b) {
+        mButtonAdd.setVisibility(b ? VISIBLE : INVISIBLE);
+        mButtonRemove.setVisibility(b ? VISIBLE : INVISIBLE);
+        mTextViewQuantity.setOnClickListener(b ? this : null);
+    }
+
 }

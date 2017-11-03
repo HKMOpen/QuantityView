@@ -21,7 +21,7 @@ public class QuantityLabelView extends RelativeLayout {
     private QuantityView.OnQuantityChangeListener listener;
     private TextView mTextViewQuantityLabel;
     private QuantityView mQuantityView;
-    private int textPadding;
+    private int textPadding, addButtonTextColor, removeButtonTextColor;
     private String label_title;
 
     public QuantityLabelView(Context context) {
@@ -147,6 +147,11 @@ public class QuantityLabelView extends RelativeLayout {
         mTextViewQuantityLabel.setText(naming);
     }
 
+
+    public void setEnabled(boolean b){
+        mQuantityView.setEnabled(b);
+    }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void init(AttributeSet attrs, int defStyle) {
 
@@ -162,9 +167,10 @@ public class QuantityLabelView extends RelativeLayout {
         mTextViewQuantityLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
         az.recycle();
 
-
         final TypedArray am = getContext().obtainStyledAttributes(attrs, R.styleable.QuantityView, defStyle, 0);
-        mQuantityView.setButtonImageSize((int) am.getDimension(R.styleable.QuantityView_qv_controlButtonIconSize, pxFromDp(16)));
+        //int txt_size = am.getDimension()
+        int image_size = (int) am.getDimension(R.styleable.QuantityView_qv_controlButtonIconSize, pxFromDp(16));
+        mQuantityView.setButtonImageSize(image_size);
         if (am.hasValue(R.styleable.QuantityView_qv_addButtonText)) {
             mQuantityView.setAddButtonText(am.getString(R.styleable.QuantityView_qv_addButtonText));
         }
@@ -199,6 +205,11 @@ public class QuantityLabelView extends RelativeLayout {
         mQuantityView.setQuantityDialog(am.getBoolean(R.styleable.QuantityView_qv_quantityDialog, true));
         mQuantityView.setQuantityTextSize(am.getDimensionPixelOffset(R.styleable.QuantityView_qv_quantityTextSize, 16));
 
+        addButtonTextColor = am.getColor(R.styleable.QuantityView_qv_addButtonTextColor, Color.BLACK);
+        removeButtonTextColor = am.getColor(R.styleable.QuantityView_qv_removeButtonTextColor, Color.BLACK);
+        mQuantityView.setAddButtonTextColor(addButtonTextColor);
+        mQuantityView.setRemoveButtonTextColor(removeButtonTextColor);
+        mQuantityView.setQuantityTextSize(size);
         am.recycle();
     }
 }

@@ -99,16 +99,17 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
     }
 
     @Override
-    public void onQuantityChanged(int id, int oldQuantity, int newQuantity, boolean programmatically) {
+    public boolean onQuantityChanged(int id, int oldQuantity, int newQuantity, boolean programmatically) {
       /*  QuantityView quantityViewCustom1 = (QuantityView) findViewById(R.id.quantityView_custom_1);
         if (newQuantity == 3) {
             quantityViewCustom1.setQuantity(oldQuantity);
         }*/
         Toast.makeText(MainActivity.this, "ID:" + id + " -Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
+        return true;
     }
 
     @Override
-    public void onLimitReached() {
+    public void onLimitReached(int bound_int) {
         Log.d(getClass().getSimpleName(), "Limit reached");
     }
 
