@@ -65,6 +65,7 @@ app:qv_quantityTextSize="24sp"
 
 
 #### Change Log
+
 ###### v1.3.1
 - fixed issue with OnQuantityChangeListener editing with dialog 
 ###### v1.3.0

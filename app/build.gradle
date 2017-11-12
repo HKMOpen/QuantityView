@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile libden.appCompat
-    //    compile 'me.himanshusoni.quantityview:quantity-view:1.2.0'
-    compile project(':quantity-view')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation libden.appCompat
+    //    implementation 'me.himanshusoni.quantityview:quantity-view:1.2.0'
+    implementation project(':quantity-view')
 }
