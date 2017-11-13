@@ -81,5 +81,10 @@ app:qv_quantityTextSize="24sp"
 ==================
 developed to make programming easy.
 
-by Himanshu Soni (himanshusoni.me@gmail.com)
+by Himanshu Soni (himanshusoni.me@gmail.com), jjhesk (jobhesk@gmail.com)
+
+
+
+### Thank you for your support and we will bring more amazing libraries to your productive works. We are accepting bitcoin by the address as below. Please scan the QR code to start
+![wallet](http://s32.postimg.org/sdd1oio1t/qrwallet.jpg)
 
