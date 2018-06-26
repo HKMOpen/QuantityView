@@ -96,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
         QuantityLabelView picbarppp = (QuantityLabelView) findViewById(R.id.picbar);
         picbarppp.setOnQuantityChangeListener(121212, this);
+        picbarppp.setTextLines(3);
+        picbarppp.setText("line one ione visa special discount offer - HK###");
+        picbarppp.setPadding(0);
+        picbarppp.setPaddingLeft(10);
+        picbarppp.setLabelDisplayWidth(500);
     }
 
     @Override

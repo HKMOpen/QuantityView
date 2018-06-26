@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -93,9 +94,23 @@ public class QuantityLabelView extends RelativeLayout {
         return textPadding;
     }
 
+    public void setPaddingLeft(int special) {
+        mTextViewQuantityLabel.setPadding(special, textPadding, textPadding, textPadding);
+    }
+
+    public void setTextLines(int h) {
+        mTextViewQuantityLabel.setLines(h);
+    }
+
     public void setPadding(int quantityPadding) {
         this.textPadding = quantityPadding;
         mTextViewQuantityLabel.setPadding(quantityPadding, quantityPadding, quantityPadding, quantityPadding);
+    }
+
+    public void setLabelDisplayWidth(int h) {
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mTextViewQuantityLabel.getLayoutParams();
+        params.width = h;
+        mTextViewQuantityLabel.setLayoutParams(params);
     }
 
     /**
@@ -148,7 +163,7 @@ public class QuantityLabelView extends RelativeLayout {
     }
 
 
-    public void setEnabled(boolean b){
+    public void setEnabled(boolean b) {
         mQuantityView.setEnabled(b);
     }
 
